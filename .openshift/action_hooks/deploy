@@ -4,7 +4,7 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 set -x
-if [[ -d "$OPENSHIFT_DATA_DIR/sonar" && ! -L "$OPENSHIFT_DATA_DIR/sonar" ]] ; then
+if [[ -d "$OPENSHIFT_DATA_DIR/sonar" && ! -L "$OPENSHIFT_DATA_DIR/sonar" ]]
 then
     cd $OPENSHIFT_DATA_DIR/sonar
     rm -rf logs
