@@ -3,12 +3,12 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
-#set -x
-#if [ -d $OPENSHIFT_DATA_DIR/sonar ]
-#then
-#    exit 0
-#else
-#    cd $OPENSHIFT_DATA_DIR/sonar
-#    rm -rf logs
-#    ln -s $OPENSHIFT_DIY_LOG_DIR logs
-#fi
+set -x
+if [[ -d "$OPENSHIFT_DATA_DIR/sonar" && ! -L "$OPENSHIFT_DATA_DIR/sonar" ]] ; then
+then
+    cd $OPENSHIFT_DATA_DIR/sonar
+    rm -rf logs
+    ln -s $OPENSHIFT_DIY_LOG_DIR logs
+else
+     exit 0
+fi
