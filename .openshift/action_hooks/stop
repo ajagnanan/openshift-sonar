@@ -3,5 +3,5 @@
 #kill `ps -ef | grep testrubyserver.rb | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
 #exit 0
 set -x
-cd $OPENSHIFT_DATA_DIR/tomcat
-bin/shutdown.sh
+cd $OPENSHIFT_DATA_DIR/sonar
+bin/linux-x86-64/sonar.sh stop
