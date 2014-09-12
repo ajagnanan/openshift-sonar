@@ -4,12 +4,11 @@
 # $OPENSHIFT_DIY_IP:8080
 #nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb $OPENSHIFT_INTERNAL_IP $OPENSHIFT_REPO_DIR/diy > $OPENSHIFT_LOG_DIR/server.log 2>&1 &
 set -x
-source $OPENSHIFT_REPO_DIR/app.conf
-cd $OPENSHIFT_DATA_DIR
-wget $sonar_zip_url -O sonar.zip
-unzip sonar.zip
-ln -s sonarqube* sonar
-cd sonar
-cp $OPENSHIFT_REPO_DIR/sonar.v4.properties conf/sonar.properties
-cp $OPENSHIFT_REPO_DIR/wrapper.v4.conf conf/wrapper.conf
-bin/linux-x86-64/sonar.sh start
+
+if [[ -d "$OPENSHIFT_DATA_DIR/sonar" && ! -L "$OPENSHIFT_DATA_DIR/sonar" ]]
+then
+    cd $OPENSHIFT_DATA_DIR
+    bin/linux-x86-64/sonar.sh start
+else
+     exit 0
+fi
