@@ -19,6 +19,7 @@ Use these quickstart commands to install nexus
 
     cd sonar
     git remote add sonar git://github.com/ajagnanan/openshift-sonar.git
+    git rm -r diy .openshift misc README.md
     git pull -s recursive -X theirs sonar master
     update sonar.v4.properties and wrapper.v4.conf with your configuration
     git push
