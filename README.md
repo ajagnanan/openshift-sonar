@@ -1,8 +1,8 @@
-Sonar on OpenShift
+SonarQube on OpenShift
 ============================
 
-This repository will help you install [Nexus](http://www.sonatype.org/nexus) on Apache Tomcat using Openshift. It is designed to download the
-latest war from the sonatype website. The nexus war url is configurable within the app.conf file.
+This repository will help you install [SonarQube](http://www.sonarqube.org) in a self contained jvm using Openshift. It is designed to download the
+zip distribution from a link. The sonar zip url is configurable within the app.conf file.
 
 Create a DIY app on OpenShift
 ----------------------------
@@ -13,19 +13,29 @@ Create a DIY application
 
     rhc app create -t diy-0.1 -a sonar
 
-Get Nexus running
+Get SonarQube running
 ----------------------------
-Use these quickstart commands to install nexus
+Use these quickstart commands to install SonarQube
 
     cd sonar
     git remote add sonar git://github.com/ajagnanan/openshift-sonar.git
     git rm -r diy .openshift misc README.md
     git pull -s recursive -X theirs sonar master
-    update sonar.v4.properties and wrapper.v4.conf with your configuration
+
+At this point, it is recommended to configure sonar to your needs. Check out these two files
+
+    sonar.v4.properties
+    wrapper.v4.conf
+
+Once finished with configuration, push sonar up to Openshift with
+
     git push
 
-That's it, you can now checkout your nexus at:
+That's it, you can now checkout your sonar at:
 
-    http://nexus-$yournamespace.rhcloud.com/nexus
+    http://sonar-$yournamespace.rhcloud.com
 
-The default nexus user is admin/admin123
+The default sonar user is admin/admin
+A database migration might be needed. If a maintenance paged is is shown, go to this url for setup
+
+    http://sonar-$yournamespace.rhcloud.com/setup
