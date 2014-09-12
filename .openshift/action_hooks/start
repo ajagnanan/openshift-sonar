@@ -7,7 +7,7 @@ set -x
 
 if [[ -d "${OPENSHIFT_DATA_DIR}sonar" ]]
 then
-    cd $OPENSHIFT_DATA_DIR
+    cd ${OPENSHIFT_DATA_DIR}sonar
     bin/linux-x86-64/sonar.sh start
 else
      exit 0
