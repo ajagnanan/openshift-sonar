@@ -4,14 +4,14 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-source $OPENSHIFT_REPO_DIR/app.conf
+source ${OPENSHIFT_REPO_DIR}conf/app.conf
 cd $OPENSHIFT_DATA_DIR
 wget $sonar_zip_url -O sonar.zip
 unzip sonar.zip
 ln -s sonarqube* sonar
 cd sonar
-cp $OPENSHIFT_REPO_DIR/sonar.v4.properties conf/sonar.properties
-cp $OPENSHIFT_REPO_DIR/wrapper.v4.conf conf/wrapper.conf
+cp ${OPENSHIFT_REPO_DIR}conf/sonar.v4.properties conf/sonar.properties
+cp ${OPENSHIFT_REPO_DIR}conf/wrapper.v4.conf conf/wrapper.conf
 
 rm ${OPENSHIFT_DATA_DIR}sonar/bin/linux-x86-64/lib/libwrapper-*
 rm ${OPENSHIFT_DATA_DIR}sonar/lib/wrapper-*
