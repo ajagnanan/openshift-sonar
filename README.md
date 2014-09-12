@@ -35,7 +35,8 @@ That's it, you can now checkout your sonar at:
 
     http://sonar-$yournamespace.rhcloud.com
 
-The default sonar user is admin/admin
-A database migration might be needed. If a maintenance paged is is shown, go to this url for setup
+The default sonar user is admin/admin.
+
+A database migration might be needed. If a maintenance paged is shown, go to this url for setup
 
     http://sonar-$yournamespace.rhcloud.com/setup
