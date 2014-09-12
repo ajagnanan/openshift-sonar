@@ -11,15 +11,16 @@ Create an account at http://openshift.redhat.com, don't forget to create a names
 
 Create a DIY application
 
-    rhc app create -t diy-0.1 -a nexus
+    rhc app create -t diy-0.1 -a sonar
 
 Get Nexus running
 ----------------------------
 Use these quickstart commands to install nexus
 
-    cd nexus
-    git remote add nexus git://github.com/ajagnanan/openshift-nexus.git
-    git pull -s recursive -X theirs nexus master
+    cd sonar
+    git remote add sonar git://github.com/ajagnanan/openshift-sonar.git
+    git pull -s recursive -X theirs sonar master
+    update sonar.v4.properties and wrapper.v4.conf with your configuration
     git push
 
 That's it, you can now checkout your nexus at:
