@@ -3,3 +3,12 @@
 # available.  Otherwise it will execute while your application is stopped
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
+
+rm ${OPENSHIFT_DATA_DIR}sonar/bin/linux-x86-64/lib/libwrapper-*
+rm ${OPENSHIFT_DATA_DIR}sonar/lib/wrapper-*
+curl -o ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9.tar.gz http://wrapper.tanukisoftware.com/download/3.5.9/wrapper-delta-pack-3.5.9.tar.gz
+tar -zxvf ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9.tar.gz -C ${OPENSHIFT_DATA_DIR}
+rm ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9.tar.gz
+cp ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9/lib/wrapper.jar ${OPENSHIFT_DATA_DIR}sonar/lib/wrapper.jar
+cp ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9/bin/wrapper-linux-x86-64 ${OPENSHIFT_DATA_DIR}sonar/bin/linux-x86-64/wrapper
+cp ${OPENSHIFT_DATA_DIR}wrapper-delta-pack-3.5.9/lib/libwrapper-linux-x86-64.so ${OPENSHIFT_DATA_DIR}sonar/bin/linux-x86-64/lib/libwrapper.so
